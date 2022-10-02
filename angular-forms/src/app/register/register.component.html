@@ -3,21 +3,42 @@
         S'enregistrer
     </div>
     <div class="card-body">
-        <form >
+        <form (ngSubmit)="getData(ngForm)" #ngForm = "ngForm" >
             <div class="row">
-                <div class="col mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="">Nom</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" placeholder="Nom" 
+                    [(ngModel)]="user.nom" name="nom"   required minlength="3" #nomVar="ngModel" 
+                    [ngClass]=" { 'is-invalid' : nomVar.touched && !nomVar.valid }  ">
+                    <div class="invalid-feedback">
+                        <span *ngIf="nomVar?.errors?.['minlength']">
+                        Minimum 3 caractères
+                        </span>
+                    </div>
                 </div>
-                <div class="col mb-3">
+                <div class="col-md-6 mb-3">
                     <label for="">Prenom</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" 
+                    [(ngModel)]="user.prenom" name="prenom"   required minlength="3" #prenomVar="ngModel" 
+                    [ngClass]=" { 'is-invalid' : prenomVar.touched && !prenomVar.valid }  ">
+                    <div class="invalid-feedback">
+                        <span *ngIf="prenomVar?.errors?.['minlength']">
+                        Minimum 3 caractères
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="">email</label>
-                    <input type="email" class="form-control">
+                    <label for="">Email</label>
+                    <input type="text" class="form-control" placeholder="Email"
+                    [(ngModel)]="user.email" name="email"   required minlength="6" #emailVar="ngModel" 
+                    [ngClass]=" { 'is-invalid' : emailVar.touched && !emailVar.valid }  ">
+                    <div class="invalid-feedback">
+                        <span *ngIf="emailVar?.errors?.['minlength']">
+                        Entrez un email valide
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="text-end">
