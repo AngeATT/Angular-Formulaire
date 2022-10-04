@@ -10,10 +10,12 @@ import { User } from './User';
 export class RegisterComponent implements OnInit {
 
   public user : User = new User(); // création d'un nouvel objet user
+  public  checkBoxPub: Boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   public getData(ngForm : NgForm) : void{

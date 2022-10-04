@@ -30,7 +30,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="">Email</label>
+                    <label for="email">Email</label>
                     <input type="text" class="form-control" placeholder="Email" [(ngModel)]="user.email" name="email"
                         required minlength="6" #emailVar="ngModel"
                         [ngClass]=" { 'is-invalid' : emailVar.touched && !emailVar.valid }  ">
@@ -41,53 +41,60 @@
                     </div>
                 </div>
             </div>
-            
-        
-        <div class="form-row mb-3">
-            <div class="col-md-12">
-                <div class="form-check mt-4 pt-3">
-                    <label for="sendCatalogId" class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
-                        oui je souhaite recevoir la publicité
-                    </label>
+
+
+            <div class="form-row mb-3">
+                <div class="col-md-12">
+                    <div class="form-check mt-4 pt-3">
+                        <label for="sendCatalogId" class="form-check-label">
+                            <input type="checkbox" class="form-check-input" [(ngModel)]="checkBoxPub"
+                                name="sendCatalogId">
+                            oui je souhaite recevoir la publicité
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-row mb-3" *ngIf="">
-            <div class="col-md-12">
-                <label for="">Adresse 1</label>
-                    <input type="text" class="form-control">
+            <div *ngIf="checkBoxPub">
+                <div class="form-row mb-3">
+                    <div class="col-md-12">
+                        <label for="">Adresse 1</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="">Adresse 2</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="">Ville</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="">Département</label>
+                            <select name="" class="form-control">
+                                <option value="">Selectionner un departement</option>
+                                <option value="Abidjan">Abidjan</option>
+                                <option value="Bouake">Bouake</option>
+                                <option value="Korogho">Korogho</option>
+                            </select>
+
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="">Code Postal</label>
+                            <input type="number" value="" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="col-md-12">
-                <label for="">Adresse 2</label>
-                    <input type="text" class="form-control">
+
+
+            <div class="text-end">
+                <button class="btn btn-info" [disabled]="!ngForm.valid">
+                    Sauvegarder
+                </button>
             </div>
-        </div>
-        <div class="row" *ngIf="">
-                <div class="col-md-6 mb-3">
-                    <label for="">Ville</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="">departement</label>
-                    <select name="" class="form-control">
-                        <option value="">Selectionner un departement</option>
-                        <option value="Abidjan">Abidjan</option>
-                        <option value="Bouake">Bouake</option>
-                        <option value="Korogho">Korogho</option>                    </select>
-                    
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="">Code Postal</label>
-                    <input type="number" value="" class="form-control">
-                </div>
-        </div>
-        <div class="text-end">
-            <button class="btn btn-info">
-                Sauvegarder
-            </button>
-        </div>
-    </form>
+        </form>
     </div>
 
 
